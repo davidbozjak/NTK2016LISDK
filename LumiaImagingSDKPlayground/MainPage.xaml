@@ -9,17 +9,21 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <SplitView Grid.Row="0" Grid.Column="0" CompactPaneLength="50" OpenPaneLength="300" IsPaneOpen="True">
+        <RelativePanel>
+            <Button Width="60" Height="45" Name="hamburgerbtn" Click="hamburgerbtn_Click"  FontFamily="Segoe MDL2 Assets" Content="" Margin="0,30,0,0"/>
+        </RelativePanel>
+        <SplitView Name="splitPanel" Grid.Row="1" Grid.Column="0" CompactPaneLength="50" OpenPaneLength="300" IsPaneOpen="True">
             <SplitView.Content>
-                <SwapChainPanel Name="mainDrawingArea" Width="300" Height="300" />
+                <SwapChainPanel Name="mainDrawingArea" Width="800" Height="800" />
             </SplitView.Content>
             <SplitView.Pane>
-                <StackPanel VerticalAlignment="Bottom">
+                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">
                     <Button Content="OpenFile" Name="btnSelectFile" Tapped="btnSelectFile_Tapped"/>
                 </StackPanel>
             </SplitView.Pane>

@@ -82,5 +82,10 @@ namespace LumiaImagingSDKPlayground
             selectedFile = await picker.PickSingleFileAsync();
             WorkingImage = new StorageFileImageSource(selectedFile);
         }
+
+        private void hamburgerbtn_Click(object sender, RoutedEventArgs e)
+        {
+            splitPanel.IsPaneOpen = !splitPanel.IsPaneOpen;
+        }
     }
 }
