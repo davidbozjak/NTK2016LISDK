@@ -74,7 +74,7 @@ namespace LumiaImagingSDKPlayground
             RenderRequested?.Invoke();
         }
 
-        private async void btnSelectFile_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void SelectFile_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var picker = new FileOpenPicker();
             picker.FileTypeFilter.Add(".jpg");
@@ -86,6 +86,11 @@ namespace LumiaImagingSDKPlayground
         private void hamburgerbtn_Click(object sender, RoutedEventArgs e)
         {
             splitPanel.IsPaneOpen = !splitPanel.IsPaneOpen;
+        }
+
+        private void Reset_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            WorkingImage = new StorageFileImageSource(selectedFile);
         }
     }
 }

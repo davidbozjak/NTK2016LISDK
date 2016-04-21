@@ -16,16 +16,39 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <RelativePanel>
-            <Button Width="60" Height="45" Name="hamburgerbtn" Click="hamburgerbtn_Click"  FontFamily="Segoe MDL2 Assets" Content="" Margin="0,30,0,0"/>
+            <Button Width="50" Height="45" Name="hamburgerbtn" Click="hamburgerbtn_Click"  FontFamily="Segoe MDL2 Assets" Content="" Margin="0,30,0,0"/>
         </RelativePanel>
-        <SplitView Name="splitPanel" Grid.Row="1" Grid.Column="0" CompactPaneLength="50" OpenPaneLength="300" IsPaneOpen="True">
+        <SplitView Name="splitPanel" Grid.Row="1" Grid.Column="0" CompactPaneLength="50" OpenPaneLength="300" DisplayMode="CompactOverlay">
             <SplitView.Content>
                 <SwapChainPanel Name="mainDrawingArea" Width="800" Height="800" />
             </SplitView.Content>
             <SplitView.Pane>
-                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">
-                    <Button Content="OpenFile" Name="btnSelectFile" Tapped="btnSelectFile_Tapped"/>
-                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <!--Top items-->
+                    <StackPanel VerticalAlignment="Top" Grid.Row="0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text=""/>
+                            <TextBlock FontSize="25" Text="Single image HDR" Margin="30,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    <!--Bottom items-->
+                    <StackPanel VerticalAlignment="Bottom" Grid.Row="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="Reset_Tapped"/>
+                            <TextBlock FontSize="25" Text="Reset" Margin="30,0,0,0" Tapped="Reset_Tapped"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="SelectFile_Tapped"/>
+                            <TextBlock FontSize="25" Text="Open file" Margin="30,0,0,0" Tapped="SelectFile_Tapped"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
             </SplitView.Pane>
         </SplitView>
     </Grid>
