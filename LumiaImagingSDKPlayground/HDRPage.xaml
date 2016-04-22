@@ -16,12 +16,12 @@
         <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Stretch">
             <TextBlock>Strength</TextBlock>
             <Slider Minimum="0" Maximum="100" Value="{Binding Strength, Mode=TwoWay}"/>
-            <TextBlock>Gamma</TextBlock>
-            <Slider Minimum="0" Maximum="100" Value="{Binding Gamma, Mode=TwoWay}"/>
             <TextBlock>Saturation</TextBlock>
             <Slider Minimum="0" Maximum="100" Value="{Binding Saturation, Mode=TwoWay}"/>
             <TextBlock>NoiseSuppression</TextBlock>
             <Slider Minimum="0" Maximum="100" Value="{Binding NoiseSuppression, Mode=TwoWay}"/>
+            <TextBlock>Gamma</TextBlock>
+            <Slider Minimum="0" Maximum="100" Value="{Binding Gamma, Mode=TwoWay}"/>
         </StackPanel>
         <local:ImageProviderElement Grid.Column="1" x:Name="ImageElement"/>
     </Grid>
