@@ -18,6 +18,7 @@ using Windows.UI;
 using Windows.Storage.Pickers;
 using Windows.Storage;
 using System.Threading.Tasks;
+using Windows.UI.Core;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -28,11 +29,13 @@ namespace LumiaImagingSDKPlayground
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private static StorageFile selectedFile;
+        private static IImageProvider originalSource;
         
         public MainPage()
         {
             this.InitializeComponent();
+
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -59,19 +62,31 @@ namespace LumiaImagingSDKPlayground
             var picker = new FileOpenPicker();
             picker.FileTypeFilter.Add(".jpg");
 
-            selectedFile = await picker.PickSingleFileAsync();
-            ImageElement.WorkingImage = new StorageFileImageSource(selectedFile);
+            var selectedFile = await picker.PickSingleFileAsync();
+            originalSource = await CreateImageSourceFromFile(selectedFile);
+            ImageElement.WorkingImage = originalSource;
         }
         
         private void Reset_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            ImageElement.WorkingImage = new StorageFileImageSource(selectedFile);
+            ImageElement.WorkingImage = originalSource;
         }
 
         private void HDR_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(HDRPage), ImageElement.WorkingImage);
+            Frame.Navigate(typeof(HDRPage), ImageElement.WorkingImage);
+        }
+
+        private static async Task<IImageProvider> CreateImageSourceFromFile(StorageFile file)
+        {
+            //method needed, workaround for exif orientation bug
+
+            using (var source = new StorageFileImageSource(file))
+            using (var renderer = new BitmapRenderer(source) { RenderOptions = RenderOptions.Cpu })
+            {
+                var bitmap = await renderer.RenderAsync();
+                return new BitmapImageSource(bitmap);
+            }
         }
     }
 }
