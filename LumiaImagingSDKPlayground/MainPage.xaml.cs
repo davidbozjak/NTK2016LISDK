@@ -28,50 +28,30 @@ namespace LumiaImagingSDKPlayground
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public event Action RenderRequested;
-
-        private StorageFile selectedFile;
-        private SwapChainPanelRenderer renderer;
-        private Task renderingTask;
-
-        public IImageProvider WorkingImage
-        {
-            get { return renderer.Source; }
-            set
-            {
-                if (value != renderer.Source)
-                {
-                    renderer.Source = value;
-                    RenderRequested?.Invoke();
-                }
-            }
-        }
-
+        private static StorageFile selectedFile;
+        
         public MainPage()
         {
             this.InitializeComponent();
-
-            renderer = new SwapChainPanelRenderer() { SwapChainPanel = mainDrawingArea };
-            renderer.Source = new ColorImageSource(new Size(100, 100), Color.FromArgb(255, 255, 23, 123));
-            
-            RenderRequested += () =>
-            {
-                if (renderingTask?.IsCompleted ?? true)
-                {
-                    renderingTask = renderer.RenderAsync().AsTask();
-                }
-                else
-                {
-                    renderingTask = renderingTask.ContinueWith(async (_) => await renderer.RenderAsync());
-                }
-            };
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            RenderRequested?.Invoke();
+            if (e.Parameter is IImageProvider)
+            {
+                ImageElement.WorkingImage = (IImageProvider)e.Parameter;
+            }
+            else
+            {
+                ImageElement.Render();
+            }
+        }
+
+        private void hamburgerbtn_Click(object sender, RoutedEventArgs e)
+        {
+            splitPanel.IsPaneOpen = !splitPanel.IsPaneOpen;
         }
 
         private async void SelectFile_Tapped(object sender, TappedRoutedEventArgs e)
@@ -80,17 +60,18 @@ namespace LumiaImagingSDKPlayground
             picker.FileTypeFilter.Add(".jpg");
 
             selectedFile = await picker.PickSingleFileAsync();
-            WorkingImage = new StorageFileImageSource(selectedFile);
+            ImageElement.WorkingImage = new StorageFileImageSource(selectedFile);
         }
-
-        private void hamburgerbtn_Click(object sender, RoutedEventArgs e)
-        {
-            splitPanel.IsPaneOpen = !splitPanel.IsPaneOpen;
-        }
-
+        
         private void Reset_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            WorkingImage = new StorageFileImageSource(selectedFile);
+            ImageElement.WorkingImage = new StorageFileImageSource(selectedFile);
+        }
+
+        private void HDR_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(HDRPage), ImageElement.WorkingImage);
         }
     }
 }

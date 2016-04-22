@@ -16,11 +16,11 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <RelativePanel>
-            <Button Width="50" Height="45" Name="hamburgerbtn" Click="hamburgerbtn_Click"  FontFamily="Segoe MDL2 Assets" Content="" Margin="0,30,0,0"/>
+            <Button Width="45" Height="45" Name="hamburgerbtn" Click="hamburgerbtn_Click"  FontFamily="Segoe MDL2 Assets" Content="" Margin="0,30,0,0"/>
         </RelativePanel>
         <SplitView Name="splitPanel" Grid.Row="1" Grid.Column="0" CompactPaneLength="50" OpenPaneLength="300" DisplayMode="CompactOverlay">
             <SplitView.Content>
-                <SwapChainPanel Name="mainDrawingArea" Width="800" Height="800" />
+                <local:ImageProviderElement x:Name="ImageElement" />
             </SplitView.Content>
             <SplitView.Pane>
                 <Grid>
@@ -32,8 +32,8 @@
                     <!--Top items-->
                     <StackPanel VerticalAlignment="Top" Grid.Row="0">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text=""/>
-                            <TextBlock FontSize="25" Text="Single image HDR" Margin="30,0,0,0"/>
+                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="HDR_Tapped"/>
+                            <TextBlock FontSize="25" Text="Single image HDR" Margin="30,0,0,0" Tapped="HDR_Tapped"/>
                         </StackPanel>
                     </StackPanel>
                     
