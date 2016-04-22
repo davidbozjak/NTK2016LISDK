@@ -69,7 +69,7 @@ namespace LumiaImagingSDKPlayground
         
         private void Reset_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            ImageElement.WorkingImage = originalSource;
+            ImageElement.WorkingImage = originalSource ?? DefaultImageProvider.DefaultImage;
         }
 
         private void HDR_Tapped(object sender, TappedRoutedEventArgs e)

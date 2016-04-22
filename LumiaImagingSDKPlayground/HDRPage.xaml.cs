@@ -39,7 +39,7 @@ namespace LumiaImagingSDKPlayground
             {
                 if (value != effect.Strength)
                 {
-                    effect.Strength = Math.Min(Math.Max(value / 100, 0), 1);
+                    effect.Strength = MapToValidRange(value, 0, 1);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Strength)));
                 }
             }
@@ -55,7 +55,7 @@ namespace LumiaImagingSDKPlayground
             {
                 if (value != effect.Gamma)
                 {
-                    effect.Gamma = ClampToValidRange(value);
+                    effect.Gamma = MapToValidRange(value, 0.6, 1.4);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Gamma)));
                 }
             }
@@ -71,7 +71,7 @@ namespace LumiaImagingSDKPlayground
             {
                 if (value != effect.Saturation)
                 {
-                    effect.Saturation = ClampToValidRange(value);
+                    effect.Saturation = MapToValidRange(value, 0.4, 1.6);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Saturation)));
                 }
             }
@@ -87,7 +87,7 @@ namespace LumiaImagingSDKPlayground
             {
                 if (value != effect.NoiseSuppression)
                 {
-                    effect.NoiseSuppression = ClampToValidRange(value);
+                    effect.NoiseSuppression = MapToValidRange(value, 0.1, 0.3);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NoiseSuppression)));
                 }
             }
@@ -122,9 +122,12 @@ namespace LumiaImagingSDKPlayground
             }
         }
         
-        private static double ClampToValidRange(double value)
-        {
-            return Math.Min(Math.Max(value / 100, 1e-3), 1);
+        private static double MapToValidRange(double value, double min, double max)
+        {   
+            // for mapping [A, B] -> [a, b] use (val - A)*(b-a)/(B-A) + a.
+            // A = 0, B = 100, a = min, b = max
+
+            return value * (max - min) / 100 + min;
         }
     }
 }

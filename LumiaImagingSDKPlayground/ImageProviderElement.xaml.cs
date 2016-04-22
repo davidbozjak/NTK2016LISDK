@@ -44,16 +44,11 @@ namespace LumiaImagingSDKPlayground
             this.InitializeComponent();
 
             renderer = new SwapChainPanelRenderer() { SwapChainPanel = renderingSurface };
-            renderer.Source = new ColorImageSource(new Size(100, 100), Color.FromArgb(255, 255, 23, 123));
+            renderer.Source = DefaultImageProvider.DefaultImage;
         }
 
         public void Render()
         {
-            if (renderer == null)
-            {
-                return;
-            }
-
             if (renderingTask?.IsCompleted ?? true)
             {
                 renderingTask = renderer.RenderAsync().AsTask();
