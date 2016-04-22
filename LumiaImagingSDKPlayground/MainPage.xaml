@@ -20,7 +20,7 @@
         </RelativePanel>
         <SplitView Name="splitPanel" Grid.Row="1" Grid.Column="0" CompactPaneLength="50" OpenPaneLength="300" DisplayMode="CompactOverlay">
             <SplitView.Content>
-                <local:ImageProviderElement x:Name="ImageElement" />
+                <local:ImageProviderElement x:Name="ImageElement"/>
             </SplitView.Content>
             <SplitView.Pane>
                 <Grid>

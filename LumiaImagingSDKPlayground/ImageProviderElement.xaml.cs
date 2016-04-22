@@ -49,6 +49,11 @@ namespace LumiaImagingSDKPlayground
 
         public void Render()
         {
+            if (renderer == null)
+            {
+                return;
+            }
+
             if (renderingTask?.IsCompleted ?? true)
             {
                 renderingTask = renderer.RenderAsync().AsTask();
@@ -57,6 +62,13 @@ namespace LumiaImagingSDKPlayground
             {
                 renderingTask = renderingTask.ContinueWith(async (_) => await renderer.RenderAsync());
             }
+        }
+        
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            renderingSurface.Width = e.NewSize.Width;
+            renderingSurface.Height = e.NewSize.Height;
+            Render();
         }
     }
 }
