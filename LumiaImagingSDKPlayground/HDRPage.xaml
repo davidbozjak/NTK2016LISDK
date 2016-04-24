@@ -10,19 +10,18 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="8*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-            <TextBlock>Strength</TextBlock>
-            <Slider Minimum="0" Maximum="100" Value="{Binding Strength, Mode=TwoWay}"/>
-            <TextBlock>Saturation</TextBlock>
-            <Slider Minimum="0" Maximum="100" Value="{Binding Saturation, Mode=TwoWay}"/>
-            <TextBlock>NoiseSuppression</TextBlock>
-            <Slider Minimum="0" Maximum="100" Value="{Binding NoiseSuppression, Mode=TwoWay}"/>
-            <TextBlock>Gamma</TextBlock>
-            <Slider Minimum="0" Maximum="100" Value="{Binding Gamma, Mode=TwoWay}"/>
+        <StackPanel Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center">Strength</TextBlock>
+            <Slider Minimum="0" Maximum="100" Value="{Binding Strength, Mode=TwoWay}" HorizontalAlignment="Stretch"/>
+            <TextBlock HorizontalAlignment="Center">Saturation</TextBlock>
+            <Slider Minimum="0" Maximum="100" Value="{Binding Saturation, Mode=TwoWay}" HorizontalAlignment="Stretch"/>
+            <TextBlock HorizontalAlignment="Center">NoiseSuppression</TextBlock>
+            <Slider Minimum="0" Maximum="100" Value="{Binding NoiseSuppression, Mode=TwoWay}" HorizontalAlignment="Stretch"/>
         </StackPanel>
-        <local:ImageProviderElement Grid.Column="1" x:Name="ImageElement"/>
+        <local:ImageProviderElement Grid.Column="2" x:Name="ImageElement"/>
     </Grid>
 </Page>

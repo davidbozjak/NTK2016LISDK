@@ -100,7 +100,7 @@ namespace LumiaImagingSDKPlayground
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += (o, e) =>
             {
-                Frame.Navigate(typeof(MainPage), effect);
+                Frame.Navigate(typeof(MainPage), ImageElement.WorkingImage);
             };
 
             this.PropertyChanged += (o, e) =>

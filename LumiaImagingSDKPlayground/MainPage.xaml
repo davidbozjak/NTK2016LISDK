@@ -9,14 +9,14 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="65"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <RelativePanel>
-            <Button Width="45" Height="45" Name="hamburgerbtn" Click="hamburgerbtn_Click"  FontFamily="Segoe MDL2 Assets" Content="" Margin="0,30,0,0"/>
+            <Button Width="45" Height="65" Name="hamburgerbtn" Click="hamburgerbtn_Click"  FontFamily="Segoe MDL2 Assets" Content="" Margin="0,30,0,0"/>
         </RelativePanel>
         <SplitView Name="splitPanel" Grid.Row="1" Grid.Column="0" CompactPaneLength="50" OpenPaneLength="300" DisplayMode="CompactOverlay">
             <SplitView.Content>
@@ -31,6 +31,10 @@
                     </Grid.RowDefinitions>
                     <!--Top items-->
                     <StackPanel VerticalAlignment="Top" Grid.Row="0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="BasicUse_Tapped"/>
+                            <TextBlock FontSize="25" Text="Basic use" Margin="30,0,0,0" Tapped="BasicUse_Tapped"/>
+                        </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="HDR_Tapped"/>
                             <TextBlock FontSize="25" Text="Single image HDR" Margin="30,0,0,0" Tapped="HDR_Tapped"/>

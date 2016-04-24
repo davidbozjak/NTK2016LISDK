@@ -101,7 +101,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DefaultImageProvider.cs" />
+    <Compile Include="BasicUsePage.xaml.cs">
+      <DependentUpon>BasicUsePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ImageResourceProvider.cs" />
     <Compile Include="HDRPage.xaml.cs">
       <DependentUpon>HDRPage.xaml</DependentUpon>
     </Compile>
@@ -120,7 +123,9 @@
     <None Include="LumiaImagingSDKPlayground_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Bozjak_HeadShot_2015.png" />
     <Content Include="Assets\DefaultImage.jpg" />
+    <Content Include="Assets\NTKLogo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -135,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="BasicUsePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HDRPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

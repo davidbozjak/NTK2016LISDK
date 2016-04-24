@@ -69,12 +69,17 @@ namespace LumiaImagingSDKPlayground
         
         private void Reset_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            ImageElement.WorkingImage = originalSource ?? DefaultImageProvider.DefaultImage;
+            ImageElement.WorkingImage = originalSource ?? ImageResourceProvider.DefaultImage;
         }
 
         private void HDR_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Frame.Navigate(typeof(HDRPage), ImageElement.WorkingImage);
+        }
+
+        private void BasicUse_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(BasicUsePage), ImageElement.WorkingImage);
         }
 
         private static async Task<IImageProvider> CreateImageSourceFromFile(StorageFile file)

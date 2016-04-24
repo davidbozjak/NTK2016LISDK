@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="LumiaImagingSDKPlayground.BasicUsePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LumiaImagingSDKPlayground"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <TextBlock Text="Blur strength" HorizontalAlignment="Center"/>
+            <Slider Minimum="0" Maximum="30" Value="{Binding BlurKernelSize, Mode=TwoWay}" HorizontalAlignment="Stretch"/>
+            <ToggleButton Content="NTK Logo" IsChecked="{Binding LogoShown, Mode=TwoWay}" />
+            <ToggleButton Content="Bozjak Headshot" IsChecked="{Binding BozjakFaceShown, Mode=TwoWay}" />
+        </StackPanel>
+        <local:ImageProviderElement Grid.Column="2" x:Name="ImageElement"/>
+    </Grid>
+</Page>
