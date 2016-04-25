@@ -9,7 +9,6 @@
     SizeChanged="UserControl_SizeChanged">
 
     <Grid>
-        <SwapChainPanel Name="renderingSurface" 
-                        Width="500" Height="500"/>
+        <SwapChainPanel Name="renderingSurface"/>
     </Grid>
 </UserControl>

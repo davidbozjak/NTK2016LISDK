@@ -26,7 +26,7 @@ namespace LumiaImagingSDKPlayground
         private SwapChainPanelRenderer renderer;
         private Task renderingTask;
 
-        public IImageProvider WorkingImage
+        public IImageProvider Source
         {
             get { return renderer.Source; }
             set
@@ -43,12 +43,17 @@ namespace LumiaImagingSDKPlayground
         {
             this.InitializeComponent();
 
-            renderer = new SwapChainPanelRenderer() { SwapChainPanel = renderingSurface };
+            renderer = new SwapChainPanelRenderer();
             renderer.Source = ImageResourceProvider.DefaultImage;
         }
-
+        
         public void Render()
         {
+            if (renderer.SwapChainPanel == null)
+            {
+                return;
+            }
+
             if (renderingTask?.IsCompleted ?? true)
             {
                 renderingTask = renderer.RenderAsync().AsTask();
@@ -63,6 +68,12 @@ namespace LumiaImagingSDKPlayground
         {
             renderingSurface.Width = e.NewSize.Width;
             renderingSurface.Height = e.NewSize.Height;
+
+            if (renderer.SwapChainPanel == null)
+            {
+                renderer.SwapChainPanel = renderingSurface;
+            }
+
             Render();
         }
     }

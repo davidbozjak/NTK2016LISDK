@@ -43,5 +43,17 @@ namespace LumiaImagingSDKPlayground
             var bozjakHeadshotFile = ResourceFolder.GetFileAsync(@"Assets\Bozjak_HeadShot_2015.png").AsTask().Result;
             BozjakHeadshot = new StorageFileImageSource(bozjakHeadshotFile);
         }
+        
+        public static async Task<IImageProvider> CreateImageSourceFromFile(StorageFile file)
+        {
+            //method needed, workaround for exif orientation bug
+
+            using (var source = new StorageFileImageSource(file))
+            using (var renderer = new BitmapRenderer(source) { RenderOptions = RenderOptions.Cpu })
+            {
+                var bitmap = await renderer.RenderAsync();
+                return new BitmapImageSource(bitmap);
+            }
+        }
     }
 }

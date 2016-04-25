@@ -87,7 +87,7 @@ namespace LumiaImagingSDKPlayground
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += (o, e) =>
             {
-                Frame.Navigate(typeof(MainPage), ImageElement.WorkingImage);
+                Frame.Navigate(typeof(MainPage), ImageElement.Source);
             };
 
             this.PropertyChanged += (o, e) =>
@@ -118,7 +118,7 @@ namespace LumiaImagingSDKPlayground
             if (e.Parameter is IImageProvider)
             {
                 var sourceParam = (IImageProvider)e.Parameter;
-                ImageElement.WorkingImage = source = sourceParam;
+                ImageElement.Source = source = sourceParam;
             }
         }
 
@@ -144,7 +144,7 @@ namespace LumiaImagingSDKPlayground
                 finalEmenent = bozjakHeadshotEffect;
             }
 
-            ImageElement.WorkingImage = finalEmenent;
+            ImageElement.Source = finalEmenent;
         }
     }
 }

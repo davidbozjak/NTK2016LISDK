@@ -100,7 +100,7 @@ namespace LumiaImagingSDKPlayground
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += (o, e) =>
             {
-                Frame.Navigate(typeof(MainPage), ImageElement.WorkingImage);
+                Frame.Navigate(typeof(MainPage), ImageElement.Source);
             };
 
             this.PropertyChanged += (o, e) =>
@@ -118,7 +118,7 @@ namespace LumiaImagingSDKPlayground
             if (e.Parameter is IImageProvider)
             {
                 var source = (IImageProvider)e.Parameter;
-                ImageElement.WorkingImage = effect = new HdrEffect(source);
+                ImageElement.Source = effect = new HdrEffect(source);
             }
         }
         

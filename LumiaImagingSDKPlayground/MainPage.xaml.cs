@@ -44,7 +44,7 @@ namespace LumiaImagingSDKPlayground
 
             if (e.Parameter is IImageProvider)
             {
-                ImageElement.WorkingImage = (IImageProvider)e.Parameter;
+                ImageElement.Source = (IImageProvider)e.Parameter;
             }
             else
             {
@@ -63,35 +63,23 @@ namespace LumiaImagingSDKPlayground
             picker.FileTypeFilter.Add(".jpg");
 
             var selectedFile = await picker.PickSingleFileAsync();
-            originalSource = await CreateImageSourceFromFile(selectedFile);
-            ImageElement.WorkingImage = originalSource;
+            originalSource = await ImageResourceProvider.CreateImageSourceFromFile(selectedFile);
+            ImageElement.Source = originalSource;
         }
         
         private void Reset_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            ImageElement.WorkingImage = originalSource ?? ImageResourceProvider.DefaultImage;
+            ImageElement.Source = originalSource ?? ImageResourceProvider.DefaultImage;
         }
 
         private void HDR_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            Frame.Navigate(typeof(HDRPage), ImageElement.WorkingImage);
+            Frame.Navigate(typeof(HDRPage), ImageElement.Source);
         }
 
         private void BasicUse_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            Frame.Navigate(typeof(BasicUsePage), ImageElement.WorkingImage);
-        }
-
-        private static async Task<IImageProvider> CreateImageSourceFromFile(StorageFile file)
-        {
-            //method needed, workaround for exif orientation bug
-
-            using (var source = new StorageFileImageSource(file))
-            using (var renderer = new BitmapRenderer(source) { RenderOptions = RenderOptions.Cpu })
-            {
-                var bitmap = await renderer.RenderAsync();
-                return new BitmapImageSource(bitmap);
-            }
+            Frame.Navigate(typeof(BasicUsePage), ImageElement.Source);
         }
     }
 }
