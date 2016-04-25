@@ -26,14 +26,21 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
-                        <RowDefinition Height="*"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <!--Top items-->
                     <StackPanel VerticalAlignment="Top" Grid.Row="0">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="BasicUse_Tapped"/>
+                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="BasicUse_Tapped"/>
                             <TextBlock FontSize="25" Text="Basic use" Margin="30,0,0,0" Tapped="BasicUse_Tapped"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="Sketch_Tapped"/>
+                            <TextBlock FontSize="25" Text="Convert to Sketch" Margin="30,0,0,0" Tapped="Sketch_Tapped"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="Cartoon_Tapped"/>
+                            <TextBlock FontSize="25" Text="Convert to Cartoon" Margin="30,0,0,0" Tapped="Cartoon_Tapped"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="HDR_Tapped"/>
@@ -42,7 +49,7 @@
                     </StackPanel>
                     
                     <!--Bottom items-->
-                    <StackPanel VerticalAlignment="Bottom" Grid.Row="2">
+                    <StackPanel VerticalAlignment="Bottom" Grid.Row="1">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="Reset_Tapped"/>
                             <TextBlock FontSize="25" Text="Reset" Margin="30,0,0,0" Tapped="Reset_Tapped"/>

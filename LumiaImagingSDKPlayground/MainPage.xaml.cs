@@ -77,6 +77,16 @@ namespace LumiaImagingSDKPlayground
             Frame.Navigate(typeof(HDRPage), ImageElement.Source);
         }
 
+        private void Sketch_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SketchPage), ImageElement.Source);
+        }
+
+        private void Cartoon_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CartoonPage), ImageElement.Source);
+        }
+
         private void BasicUse_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Frame.Navigate(typeof(BasicUsePage), ImageElement.Source);

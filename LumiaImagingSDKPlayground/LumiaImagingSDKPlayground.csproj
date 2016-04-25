@@ -101,6 +101,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CartoonPage.xaml.cs">
+      <DependentUpon>CartoonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SketchPage.xaml.cs">
+      <DependentUpon>SketchPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BasicUsePage.xaml.cs">
       <DependentUpon>BasicUsePage.xaml</DependentUpon>
     </Compile>
@@ -140,6 +146,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CartoonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SketchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="BasicUsePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
