@@ -25,13 +25,13 @@
             <SplitView.Pane>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <!--Top items-->
                     <StackPanel VerticalAlignment="Top" Grid.Row="0">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="BasicUse_Tapped"/>
+                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="BasicUse_Tapped"/>
                             <TextBlock FontSize="25" Text="Basic use" Margin="30,0,0,0" Tapped="BasicUse_Tapped"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -45,6 +45,10 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="HDR_Tapped"/>
                             <TextBlock FontSize="25" Text="Single image HDR" Margin="30,0,0,0" Tapped="HDR_Tapped"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="Draw_Tapped"/>
+                            <TextBlock FontSize="25" Text="Draw!" Margin="30,0,0,0" Tapped="Draw_Tapped"/>
                         </StackPanel>
                     </StackPanel>
                     

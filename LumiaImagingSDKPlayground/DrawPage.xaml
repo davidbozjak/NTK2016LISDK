@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="LumiaImagingSDKPlayground.DrawPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LumiaImagingSDKPlayground"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:inkTools="using:Microsoft.Labs.InkToolbarControl"
+    mc:Ignorable="d"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <inkTools:InkToolbar TargetInkCanvas="{x:Bind MyInkCanvas}" PenColor="Red" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
+        <StackPanel Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+            <Button Content="Save Scribbles" Click="SaveScribbles_Click"/>
+            <Button Content="Save both" Click="SaveBoth_Click"/>
+        </StackPanel>
+        <local:ImageProviderElement Grid.Column="2" x:Name="ImageElement"/>
+        <Border BorderBrush="Green" BorderThickness="2" Grid.Column="2">
+            <InkCanvas Name="MyInkCanvas" />
+        </Border>
+    </Grid>
+</Page>

@@ -37,7 +37,7 @@ namespace LumiaImagingSDKPlayground
 
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
         }
-
+        
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -90,6 +90,11 @@ namespace LumiaImagingSDKPlayground
         private void BasicUse_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Frame.Navigate(typeof(BasicUsePage), ImageElement.Source);
+        }
+
+        private void Draw_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(DrawPage), ImageElement.Source);
         }
     }
 }

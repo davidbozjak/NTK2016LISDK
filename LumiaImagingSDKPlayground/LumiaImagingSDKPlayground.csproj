@@ -104,6 +104,9 @@
     <Compile Include="CartoonPage.xaml.cs">
       <DependentUpon>CartoonPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DrawPage.xaml.cs">
+      <DependentUpon>DrawPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SketchPage.xaml.cs">
       <DependentUpon>SketchPage.xaml</DependentUpon>
     </Compile>
@@ -150,13 +153,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SketchPage.xaml">
+    <Page Include="BasicUsePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="BasicUsePage.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="DrawPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SketchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="HDRPage.xaml">
       <SubType>Designer</SubType>
@@ -170,6 +177,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="InkToolbarControl, Version=0.3.2">
+      <Name>InkToolbar Control</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
