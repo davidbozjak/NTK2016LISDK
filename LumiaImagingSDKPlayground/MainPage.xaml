@@ -55,6 +55,10 @@
                     <!--Bottom items-->
                     <StackPanel VerticalAlignment="Bottom" Grid.Row="1">
                         <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="Save_Tapped"/>
+                            <TextBlock FontSize="25" Text="Save" Margin="30,0,0,0" Tapped="Save_Tapped"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
                             <TextBlock FontSize="45" FontFamily="Segoe MDL2 Assets" Text="" Tapped="Reset_Tapped"/>
                             <TextBlock FontSize="25" Text="Reset" Margin="30,0,0,0" Tapped="Reset_Tapped"/>
                         </StackPanel>

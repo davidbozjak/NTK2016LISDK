@@ -96,5 +96,17 @@ namespace LumiaImagingSDKPlayground
         {
             Frame.Navigate(typeof(DrawPage), ImageElement.Source);
         }
+
+        private async void Save_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var file = await KnownFolders.SavedPictures.CreateFileAsync("OutputEffect.jpg", CreationCollisionOption.GenerateUniqueName);
+
+            using (var renderer = new JpegRenderer(ImageElement.Source))
+            using (var outputStream = (await file.OpenStreamForWriteAsync()))
+            {
+                var buffer = await renderer.RenderAsync();
+                await buffer.AsStream().CopyToAsync(outputStream);
+            }
+        }
     }
 }
