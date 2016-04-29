@@ -2,6 +2,7 @@
 using Lumia.Imaging.Adjustments;
 using Lumia.Imaging.Artistic;
 using Lumia.Imaging.Compositing;
+using Lumia.Imaging.Transforms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -78,19 +80,24 @@ namespace LumiaImagingSDKPlayground
 
                 scribblesStream.Position = 0;
 
+                var absoluteBoudningRect = MyInkCanvas.InkPresenter.StrokeContainer.BoundingRect;
+
                 using (var scribblesSource = new StreamImageSource(scribblesStream))
-                using (var scribblesBlender = new BlendEffect(ImageElement.Source, scribblesSource))
-                using (var overlayRenderer = new JpegRenderer(scribblesBlender) { RenderOptions = RenderOptions.Cpu })
+                using (var scribbleBlender = new BlendEffect(new ColorImageSource(new Size(MyInkCanvas.ActualWidth, MyInkCanvas.ActualHeight), Color.FromArgb(0, 0, 0, 0)), scribblesSource))
+                using (var reframe = new ReframingEffect(scribbleBlender, await InkHelper.GetDrawArea(ImageElement.Source, MyInkCanvas), 0, new Point(0, 0)))
+                using (var overlayBlender = new BlendEffect(ImageElement.Source, reframe))
+                using (var overlayRenderer = new JpegRenderer(overlayBlender) { RenderOptions = RenderOptions.Cpu })
                 {
-                    var absoluteBoudningRect = MyInkCanvas.InkPresenter.StrokeContainer.BoundingRect;
                     var relativeBoundingRect = new Rect(absoluteBoudningRect.Left / MyInkCanvas.ActualWidth, absoluteBoudningRect.Top / MyInkCanvas.ActualHeight,
                                                         absoluteBoudningRect.Width / MyInkCanvas.ActualWidth, absoluteBoudningRect.Height / MyInkCanvas.ActualHeight);
-                    scribblesBlender.TargetArea = relativeBoundingRect;
+                    scribbleBlender.TargetArea = relativeBoundingRect;
+                    scribbleBlender.BlendFunction = BlendFunction.Normal;
+                    scribbleBlender.GlobalAlpha = 1.0;
 
                     var buffer = await overlayRenderer.RenderAsync();
 
                     var file = await KnownFolders.SavedPictures.CreateFileAsync("ScribblesBoth.jpg", CreationCollisionOption.GenerateUniqueName);
-                    
+
                     using (var outputStream = (await file.OpenStreamForWriteAsync()))
                     {
                         await buffer.AsStream().CopyToAsync(outputStream);

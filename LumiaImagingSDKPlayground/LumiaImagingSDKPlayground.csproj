@@ -107,6 +107,7 @@
     <Compile Include="DrawPage.xaml.cs">
       <DependentUpon>DrawPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InkHelper.cs" />
     <Compile Include="SketchPage.xaml.cs">
       <DependentUpon>SketchPage.xaml</DependentUpon>
     </Compile>
